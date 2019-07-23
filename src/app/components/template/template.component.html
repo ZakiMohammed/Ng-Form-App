@@ -1,0 +1,84 @@
+<h3>Template Form</h3>
+<form 
+    novalidate
+    #frm="ngForm"
+    (ngSubmit)="onSubmit(frm)">
+    <div>
+        <label for="name">Name: </label>
+        <input 
+            type="text" 
+            name="name" 
+            placeholder="Enter name"
+            required
+            minlength="3"
+            [(ngModel)]="user.name"
+            #nameVar="ngModel">
+        <span *ngIf="(nameVar.touched || nameVar.dirty) && nameVar.errors?.required" class="color-red">This field is required</span>
+        <span *ngIf="(nameVar.touched || nameVar.dirty) && nameVar.errors?.minlength" class="color-red">Min 3 character is requried</span>
+    </div>
+    <div>
+        <label for="userName">User Name: </label>
+        <input 
+            type="text" 
+            name="userName" 
+            placeholder="Enter user name"
+            required
+            minlength="3"
+            [(ngModel)]="user.userName"
+            #userNameVar="ngModel">
+        <span *ngIf="(userNameVar.touched || userNameVar.dirty) && userNameVar.errors?.required" class="color-red">This field is required</span>
+        <span *ngIf="(userNameVar.touched || userNameVar.dirty) && userNameVar.errors?.minlength" class="color-red">Min 3 character is requried</span>
+    </div>
+    <div>
+        <label for="email">Email: </label>
+        <input 
+            type="email" 
+            name="email" 
+            placeholder="Enter email"
+            required
+            minlength="3"
+            email
+            [(ngModel)]="user.email"
+            #emailVar="ngModel">
+        <span *ngIf="(emailVar.touched || emailVar.dirty) && emailVar.errors?.required" class="color-red">This field is required</span>
+        <span *ngIf="(emailVar.touched || emailVar.dirty) && emailVar.errors?.minlength" class="color-red">Min 3 character is requried</span>
+        <span *ngIf="(emailVar.touched || emailVar.dirty) && emailVar.errors?.email" class="color-red">Email is invalid</span>
+    </div>
+    <div>
+        <label for="phone">Phone: </label>
+        <input 
+            type="text" 
+            name="phone" 
+            placeholder="Enter phone" 
+            required
+            minlength="3"
+            maxlength="10"
+            [(ngModel)]="user.phone"
+            #phoneVar="ngModel">
+        <span *ngIf="(phoneVar.touched || phoneVar.dirty) && phoneVar.errors?.required" class="color-red">This field is required</span>
+        <span *ngIf="(phoneVar.touched || phoneVar.dirty) && phoneVar.errors?.minlength" class="color-red">Min 3 character is requried</span>
+    </div>
+    <div>
+        <label for="website">Website: </label>
+        <input 
+            type="url" 
+            name="website" 
+            placeholder="Enter website"
+            required
+            minlength="3"
+            pattern="https?://.+"
+            [(ngModel)]="user.website"
+            #websiteVar="ngModel">
+        <span *ngIf="(websiteVar.touched || websiteVar.dirty) && websiteVar.errors?.required" class="color-red">This field is required</span>
+        <span *ngIf="(websiteVar.touched || websiteVar.dirty) && websiteVar.errors?.minlength" class="color-red">Min 3 character is requried</span>
+        <span *ngIf="(websiteVar.touched || websiteVar.dirty) && websiteVar.errors?.pattern" class="color-red">URL is invalid</span>
+    </div>
+    <br>
+    <button type="submit" [disabled]="!frm.form.valid">Submit</button>
+    <button type="reset">Reset</button>
+</form>
+
+<br>
+
+<div *ngIf="loader">Loading please wait...</div>
+<div *ngIf="message" [innerHTML]="message"></div>

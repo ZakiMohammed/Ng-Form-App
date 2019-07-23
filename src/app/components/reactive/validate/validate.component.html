@@ -1,0 +1,63 @@
+<h3>Reactive Validate Form</h3>
+<form
+    novalidate
+    [formGroup]="frm"
+    (ngSubmit)="onSubmit()">
+    <div>
+        <label for="name">Name: </label>
+        <input 
+            type="text" 
+            name="name" 
+            placeholder="Enter name"
+            formControlName="name">
+        <span *ngIf="(f.name.touched || f.name.dirty) && f.name.errors?.required" class="color-red">This field is required</span>
+        <span *ngIf="(f.name.touched || f.name.dirty) && f.name.errors?.minlength" class="color-red">Min 3 character is requried</span>
+    </div>
+    <div>
+        <label for="userName">User Name: </label>
+        <input 
+            type="text" 
+            name="userName" 
+            placeholder="Enter user name"
+            formControlName="userName">        
+        <span *ngIf="(f.userName.touched || f.userName.dirty) && f.userName.errors?.required" class="color-red">This field is required</span>
+        <span *ngIf="(f.userName.touched || f.userName.dirty) && f.userName.errors?.minlength" class="color-red">Min 3 character is requried</span>
+    </div>
+    <div>
+        <label for="email">Email: </label>
+        <input 
+            type="email" 
+            name="email" 
+            placeholder="Enter email"
+            formControlName="email">   
+        <span *ngIf="(f.email.touched || f.email.dirty) && f.email.errors?.required" class="color-red">This field is required</span>
+        <span *ngIf="(f.email.touched || f.email.dirty) && f.email.errors?.minlength" class="color-red">Min 3 character is requried</span>
+        <span *ngIf="(f.email.touched || f.email.dirty) && f.email.errors?.email" class="color-red">Invalid Email</span>
+    </div>
+    <div>
+        <label for="phone">Phone: </label>
+        <input 
+            type="text" 
+            name="phone" 
+            placeholder="Enter phone" 
+            formControlName="phone">    
+        <span *ngIf="(f.phone.touched || f.phone.dirty) && f.phone.errors?.required" class="color-red">This field is required</span>
+        <span *ngIf="(f.phone.touched || f.phone.dirty) && f.phone.errors?.minlength" class="color-red">Min 3 character is requried</span>    
+    </div>
+    <div>
+        <label for="website">Website: </label>
+        <input 
+            type="url" 
+            name="website" 
+            placeholder="Enter website"
+            formControlName="website">
+        <span *ngIf="(f.website.touched || f.website.dirty) && f.website.errors?.required" class="color-red">This field is required</span>
+        <span *ngIf="(f.website.touched || f.website.dirty) && f.website.errors?.minlength" class="color-red">Min 3 character is requried</span>    
+        <span *ngIf="(f.website.touched || f.website.dirty) && f.website.errors?.pattern" class="color-red">Invalid URL</span>    
+    </div>
+    <br>
+    <button type="submit" [disabled]="!frm.valid">Submit</button>
+    <button type="reset">Reset</button>
+    <pre><code>{{ frm.value | json }}</code>
+    </pre>
+</form>

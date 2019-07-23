@@ -1,0 +1,62 @@
+<h3>Reactive Builder Form</h3>
+<form
+    novalidate
+    [formGroup]="frm"
+    (ngSubmit)="onSubmit()">
+    <div>
+        <label for="name">Name: </label>
+        <input 
+            type="text" 
+            name="name" 
+            placeholder="Enter name"
+            required
+            minlength="3"
+            formControlName="name">
+    </div>
+    <div>
+        <label for="userName">User Name: </label>
+        <input 
+            type="text" 
+            name="userName" 
+            placeholder="Enter user name"
+            required
+            minlength="3"
+            formControlName="userName">        
+    </div>
+    <div>
+        <label for="email">Email: </label>
+        <input 
+            type="email" 
+            name="email" 
+            placeholder="Enter email"
+            required
+            minlength="3"
+            formControlName="email">        
+    </div>
+    <div>
+        <label for="phone">Phone: </label>
+        <input 
+            type="text" 
+            name="phone" 
+            placeholder="Enter phone" 
+            required
+            minlength="3"
+            maxlength="10"
+            formControlName="phone">        
+    </div>
+    <div>
+        <label for="website">Website: </label>
+        <input 
+            type="url" 
+            name="website" 
+            placeholder="Enter website"
+            required
+            minlength="3"
+            formControlName="website">
+    </div>
+    <br>
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+    <pre><code>{{ frm.value | json }}</code>
+    </pre>
+</form>
