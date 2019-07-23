@@ -7,6 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { BuilderComponent } from './components/reactive/builder/builder.component';
 import { ValidateComponent } from './components/reactive/validate/validate.component';
+import { ArrayComponent } from './components/reactive/array/array.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'reactive/basic', component: BasicComponent },
   { path: 'reactive/builder', component: BuilderComponent },
   { path: 'reactive/validate', component: ValidateComponent },
+  { path: 'reactive/array', component: ArrayComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];

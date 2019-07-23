@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { BuilderComponent } from './components/reactive/builder/builder.component';
 import { ValidateComponent } from './components/reactive/validate/validate.component';
+import { ArrayComponent } from './components/reactive/array/array.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ValidateComponent } from './components/reactive/validate/validate.compo
     HomeComponent,
     NotFoundComponent,
     BuilderComponent,
-    ValidateComponent
+    ValidateComponent,
+    ArrayComponent
   ],
   imports: [
     BrowserModule,

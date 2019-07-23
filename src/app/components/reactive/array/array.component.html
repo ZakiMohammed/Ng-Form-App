@@ -1,0 +1,32 @@
+<h3>Reactive Array Form</h3>
+<form
+    novalidate
+    [formGroup]="frm"
+    (ngSubmit)="onSubmit()">
+    <div>
+        <label for="name">Name: </label>
+        <input 
+            type="text" 
+            name="name" 
+            placeholder="Enter name"
+            formControlName="name">
+    </div>
+
+    <div formArrayName="phones" *ngFor="let phone of phones.controls; let i = index;">
+        <label for="phone">Phone {{ i + 1 }}: </label>
+        <input 
+            type="text" 
+            name="phone" 
+            placeholder="Enter phone"
+            [formControlName]="i">
+        <button type="button" (click)="onRemoveClick($event, i)" *ngIf="i > 1">x</button>
+    </div>
+    <button type="button" (click)="onAddClick($event)" *ngIf="phones.controls.length < 5">+</button>
+    <br>
+
+    <br>
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+    <pre><code>{{ frm.value | json }}</code>
+    </pre>
+</form>
