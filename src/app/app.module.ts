@@ -12,6 +12,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { BuilderComponent } from './components/reactive/builder/builder.component';
 import { ValidateComponent } from './components/reactive/validate/validate.component';
 import { ArrayComponent } from './components/reactive/array/array.component';
+import { FileUploadComponent } from './components/reactive/file-upload/file-upload.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ArrayComponent } from './components/reactive/array/array.component';
     NotFoundComponent,
     BuilderComponent,
     ValidateComponent,
-    ArrayComponent
+    ArrayComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,

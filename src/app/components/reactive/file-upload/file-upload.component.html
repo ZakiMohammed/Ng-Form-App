@@ -1,0 +1,21 @@
+<h3>Reactive Builder Form</h3>
+<form
+    novalidate
+    [formGroup]="frm"
+    (ngSubmit)="onSubmit()">
+    <div>
+        <label for="name">Name: </label>
+        <input 
+            type="file" 
+            name="picture" 
+            placeholder="Enter picture"    
+            multiple="true"        
+            (change)="onFileSelect($event)">
+        <input type="hidden" name="hidPicture" formControlName="picture" />
+    </div>
+    <br>
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+    <pre><code>{{ frm.value | json }}</code>
+    </pre>
+</form>

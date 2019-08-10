@@ -8,6 +8,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { BuilderComponent } from './components/reactive/builder/builder.component';
 import { ValidateComponent } from './components/reactive/validate/validate.component';
 import { ArrayComponent } from './components/reactive/array/array.component';
+import { FileUploadComponent } from './components/reactive/file-upload/file-upload.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'reactive/builder', component: BuilderComponent },
   { path: 'reactive/validate', component: ValidateComponent },
   { path: 'reactive/array', component: ArrayComponent },
+  { path: 'reactive/file-upload', component: FileUploadComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];

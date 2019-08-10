@@ -8,6 +8,7 @@ import { User } from '../models/user';
 export class UserService {
 
   apiUrl: string = 'https://jsonplaceholder.typicode.com/users';
+  phpApiUrl: string = 'http://172.16.3.141:8081/_study/app-admin/api/profile/upload.php';
   headers: HttpHeaders = null;
 
   constructor(private http: HttpClient) { 
@@ -16,6 +17,10 @@ export class UserService {
 
   post(user: User) : Promise<User> {    
     return this.http.post<User>(this.apiUrl, user, { headers: this.headers }).toPromise<User>();
+  }
+
+  upload(picture: any) {    
+    return this.http.post<any>(this.phpApiUrl, picture);
   }
 
 }
