@@ -12,16 +12,16 @@ export class FileUploadComponent implements OnInit {
 
   frm: FormGroup;
   files: any[] = [];
+  allowedExtensions: any[] = ['.jpeg', '.jpg', '.png', '.gif', '.bmp'];
 
   constructor(
     private builder: FormBuilder,
-    private userService: UserService) {}
+    private userService: UserService) { }
 
   ngOnInit() {
     this.frm = this.builder.group({
-      picture: ['', Validators.required],
-      pictureFile: ''
-    });    
+      picture: ['', Validators.required]
+    });
   }
 
   onSubmit() {
@@ -30,7 +30,9 @@ export class FileUploadComponent implements OnInit {
     }
 
     const formData = new FormData();
-    formData.append('Upload', this.frm.get('pictureFile').value);
+    this.files.forEach((file: any, index: number) => {
+      formData.append('Upload ' + (index + 1), file);
+    });
 
     this.userService.upload(formData).subscribe(
       (res) => console.log(res),
@@ -40,8 +42,18 @@ export class FileUploadComponent implements OnInit {
 
   onFileSelect(event: any) {
 
-    let allowedExtensions = ['.jpeg', '.jpg', '.png', '.gif', '.bmp'];
-    console.log('🏀', event.target.files);
+    let fileNames = '';
+
+    this.files = [];
+
+    for (const key in event.target.files) {
+      const file = event.target.files[key];
+      if (typeof(file) === 'object') {
+        this.files.push(file); 
+      }
+    }
+    console.log('⚾', this.files);
+    this.frm.get('picture').setValue(fileNames);
   }
 
 }
